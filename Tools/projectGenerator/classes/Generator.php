@@ -37,7 +37,7 @@ require_once( "NPWebPlugin.php");
 require_once( "SafariWebPlugin.php");
 
 
-class Generator
+class T3DGenerator
 {
     public static $app_name;
     public static $paths            = array();
