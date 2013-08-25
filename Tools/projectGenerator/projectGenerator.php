@@ -38,9 +38,9 @@ error_reporting( E_ALL & ~E_NOTICE );
 //
 // Requires
 //
+require_once( "classes/Generator.php" );
 require_once( "classes/BuildTarget.php" );
 require_once( "btargets/targets.inc" );
-require_once( "classes/Generator.php" );
 require_once( "projectGenUtils.inc" );
 require_once( "smarty/Smarty.class.php" );
 
@@ -70,7 +70,7 @@ if ( $argc >= 3 )
     $torqueRoot = str_replace( "\\", "/", $argv[2] );
 
 // Kick off the generator
-Generator::init( $torqueRoot );
+T3DGenerator::init( $torqueRoot );
 
 // Ready to read our config file.
 echo( "   - Loading config file " . realpath($argv[1])."\n" );
@@ -78,12 +78,12 @@ echo( "   - Loading config file " . realpath($argv[1])."\n" );
 require( $argv[ 1 ] );
 
 // Generate all projects
-Generator::generateProjects( $tpl );
+T3DGenerator::generateProjects( $tpl );
 
 // Now the solutions (if any)
 $tpl->clear_all_cache();
 
-Generator::generateSolutions( $tpl );
+T3DGenerator::generateSolutions( $tpl );
 
 // finally write out the sample.html for web deployment (if any)
 WebPlugin::writeSampleHtml();

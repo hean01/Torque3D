@@ -32,7 +32,7 @@ function beginProject($name, $sharedConfig)
     // Set the game project name, this is what your game's exe/dll will be called
     setGameProjectName($name);
     
-    if (Generator::$platform == "win32" && $sharedConfig)
+    if (T3DGenerator::$platform == "win32" && $sharedConfig)
         beginSolutionConfig( $name, '{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}' );
 
 	
@@ -40,18 +40,18 @@ function beginProject($name, $sharedConfig)
 
 function endProject($sharedConfig)
 {
-    if (Generator::$platform == "win32" && $sharedConfig)
+    if (T3DGenerator::$platform == "win32" && $sharedConfig)
         endSolutionConfig();
 }
 
 function beginSolutionConfig( $name, $guid = '' )
 {
-	Generator::beginSolution( $name, $guid );  
+	T3DGenerator::beginSolution( $name, $guid );
 }
 
 function addSolutionProjectRef( $pname )
 {
-	Generator::addSolutionProjectRef( $pname );		
+	T3DGenerator::addSolutionProjectRef( $pname );
 }
 
 // Add a reference to an external project, this is used for WPF projects currently
@@ -59,114 +59,114 @@ function addSolutionProjectRef( $pname )
 // However, it is nice to not have to add the project to the solution whenever you run the project generator
 function addSolutionProjectRefExt( $pname, $ppath, $pguid )
 {
-    Generator::addSolutionProjectRefExt( $pname, $ppath, $pguid );		
+    T3DGenerator::addSolutionProjectRefExt( $pname, $ppath, $pguid );
 }
 
 function endSolutionConfig()
 {
-	Generator::endSolution();		
+	T3DGenerator::endSolution();
 }
 
 function setPlatform( $platform )
 {      
    echo('   - Setting platform to: ' . $platform . "\n");
    
-   Generator::$platform = $platform;
+   T3DGenerator::$platform = $platform;
 }
 
 function includeLib( $libName )
 {
-    //echo( "GLP: " . Generator::getGeneratorLibsPath() . $libName . "\n" );
+    //echo( "GLP: " . T3DGenerator::getGeneratorLibsPath() . $libName . "\n" );
     
-    Generator::includeLib( $libName );    
+    T3DGenerator::includeLib( $libName );
 
 }
 
 function includeModule( $modName )
 {
-   require( Generator::getGeneratorModulesPath() . $modName . '.inc' );
+   require( T3DGenerator::getGeneratorModulesPath() . $modName . '.inc' );
 }
 
 function beginActiveXConfig( $lib_name, $guid = '', $gameDir = 'game', $output_name = '' )
 {    
-	Generator::beginActiveXConfig( $lib_name, $guid, $gameDir, $output_name );
+	T3DGenerator::beginActiveXConfig( $lib_name, $guid, $gameDir, $output_name );
 }
 
 function endActiveXConfig()
 {
-	Generator::endActiveXConfig();
+	T3DGenerator::endActiveXConfig();
 }
 
 function beginSafariConfig( $lib_name, $guid = '', $gameDir = 'game', $output_name = '' )
 {    
-	Generator::beginSafariConfig( $lib_name, $guid, $gameDir, $output_name );
+	T3DGenerator::beginSafariConfig( $lib_name, $guid, $gameDir, $output_name );
 }
 
 function endSafariConfig()
 {
-	Generator::endSafariConfig();
+	T3DGenerator::endSafariConfig();
 }
 
 function beginSharedLibConfig( $lib_name, $guid = '', $gameDir = 'game', $output_name = '' )
 {    
-	Generator::beginSharedLibConfig( $lib_name, $guid, $gameDir, $output_name );
+	T3DGenerator::beginSharedLibConfig( $lib_name, $guid, $gameDir, $output_name );
 }
 
 function endSharedLibConfig()
 {
-	Generator::endSharedLibConfig();
+	T3DGenerator::endSharedLibConfig();
 }
 
 function beginNPPluginConfig( $lib_name, $guid = '', $gameDir = 'game', $output_name = '' )
 {    
-	Generator::beginNPPluginConfig( $lib_name, $guid, $gameDir, $output_name );
+	T3DGenerator::beginNPPluginConfig( $lib_name, $guid, $gameDir, $output_name );
 }
 
 function endNPPluginConfig()
 {
-	Generator::endNPPluginConfig();
+	T3DGenerator::endNPPluginConfig();
 }
 
 
 function beginLibConfig( $lib_name, $guid = '', $gameDir = 'game', $output_name = '' )
 {    
-	Generator::beginLibConfig( $lib_name, $guid, $gameDir, $output_name );
+	T3DGenerator::beginLibConfig( $lib_name, $guid, $gameDir, $output_name );
 }
 
 function endLibConfig()
 {
-	Generator::endLibConfig();
+	T3DGenerator::endLibConfig();
 }
 
 function beginAppConfig( $app_name, $guid = '', $game_dir = 'game', $output_name = '' )
 {    
-   Generator::beginAppConfig( $app_name, $guid, $game_dir, $output_name );
+   T3DGenerator::beginAppConfig( $app_name, $guid, $game_dir, $output_name );
 }
 
 function endAppConfig()
 {
-	Generator::endAppConfig();
+	T3DGenerator::endAppConfig();
 }
 
 function beginSharedAppConfig( $app_name, $guid = '', $game_dir = 'game', $output_name = '' )
 {    
-   Generator::beginSharedAppConfig( $app_name, $guid, $game_dir, $output_name );
+   T3DGenerator::beginSharedAppConfig( $app_name, $guid, $game_dir, $output_name );
 }
 
 function endSharedAppConfig()
 {
-	Generator::endSharedAppConfig();
+	T3DGenerator::endSharedAppConfig();
 }
 
 
 function beginCSProjectConfig( $app_name, $guid = '', $game_dir = 'game', $output_name = '' )
 {    
-   Generator::beginCSProjectConfig( $app_name, $guid, $game_dir, $output_name );
+   T3DGenerator::beginCSProjectConfig( $app_name, $guid, $game_dir, $output_name );
 }
 
 function endCSProjectConfig()
 {
-	Generator::endCSProjectConfig();
+	T3DGenerator::endCSProjectConfig();
 }
 
 
@@ -175,26 +175,26 @@ function endCSProjectConfig()
 
 function beginModule( $name )
 {
-	Generator::beginModule( $name );
+	T3DGenerator::beginModule( $name );
 }
 
 function endModule()
 {
-    Generator::endModule();	
+    T3DGenerator::endModule();
 }
 
 function addSrcDir( $dir, $recurse = false )
 {
     //echo( "ADD SRC DIR: " . $dir . "\n" );
 
-	Generator::addSrcDir( $dir, $recurse );
+	T3DGenerator::addSrcDir( $dir, $recurse );
 }
 
 function addSrcFile( $file )
 {
     //echo( "ADD SRC FILE: " . $file . "\n" );
 
-	Generator::addSrcFile( $file );
+	T3DGenerator::addSrcFile( $file );
 }
 
 function addEngineSrcDir( $dir )
@@ -213,12 +213,12 @@ function addEngineSrcFile( $file )
 
 function addLibSrcDir( $dir )
 {
-	addSrcDir( Generator::getLibSrcDir() . $dir );
+	addSrcDir( T3DGenerator::getLibSrcDir() . $dir );
 }
 
 function addLibSrcFile( $file )
 {
-	addSrcDir( Generator::getLibSrcDir() . $file );
+	addSrcDir( T3DGenerator::getLibSrcDir() . $file );
 }
 
 function addLibIncludePath( $path )
@@ -253,29 +253,29 @@ function getAppEngineBinDir()
 
 function getEngineSrcDir()
 {
-	return Generator::getEngineSrcDir();
+	return T3DGenerator::getEngineSrcDir();
 }
 
 function getLibSrcDir()
 {
-	return Generator::getLibSrcDir();
+	return T3DGenerator::getLibSrcDir();
 }
 
 function getEngineBinDir()
 {
-	return Generator::getEngineBinDir();
+	return T3DGenerator::getEngineBinDir();
 }
 
 function addIncludePath( $path )
 {
 	//echo( "ADD INCLUDE: " . $path . "\n" );    
 
-	Generator::addIncludePath( $path );
+	T3DGenerator::addIncludePath( $path );
 }
 /// Add a preprocessor directive/define
 function addProjectDefine( $d, $v = null )
 {	
-	Generator::addProjectDefine( $d, $v );
+	T3DGenerator::addProjectDefine( $d, $v );
 }
 /// Add a list of defines in one call
 function addProjectDefines()
@@ -284,143 +284,143 @@ function addProjectDefines()
 	$count = func_num_args();
 	
 	if( $count > 0 )
-		Generator::addProjectDefines( $args );
+		T3DGenerator::addProjectDefines( $args );
 	else
 		echo( "addProjectDefines() - no arguments passed!" );
 }
 
 function setProjectGUID( $guid )
 {
-	Generator::setProjectGUID( $guid );
+	T3DGenerator::setProjectGUID( $guid );
 }
 
 function setProjectModuleDefinitionFile( $mdef )
 {
-	Generator::setProjectModuleDefinitionFile( $mdef );
+	T3DGenerator::setProjectModuleDefinitionFile( $mdef );
 }
 
 
 function addProjectLibDir( $dir )
 {
-    Generator::addProjectLibDir( $dir );
+    T3DGenerator::addProjectLibDir( $dir );
 }
 
 function addProjectLibInput( $lib_name, $libDebug = null )
 {
-    Generator::addProjectLibInput( $lib_name, $libDebug );
+    T3DGenerator::addProjectLibInput( $lib_name, $libDebug );
 }
 
 function addProjectIgnoreDefaultLib( $lib )
 {
-	Generator::addProjectIgnoreDefaultLib( $lib );
+	T3DGenerator::addProjectIgnoreDefaultLib( $lib );
 }
 
 function copyFileToProject( $sourcePath, $projPath )
 {
-    Generator::copyFileToProject( $sourcePath, $projPath );
+    T3DGenerator::copyFileToProject( $sourcePath, $projPath );
 }
 
 function addProjectDependency( $pd )
 {
-    Generator::addProjectDependency( $pd );
+    T3DGenerator::addProjectDependency( $pd );
 }
 
 function removeProjectDependency( $pd )
 {
-    Generator::removeProjectDependency( $pd );
+    T3DGenerator::removeProjectDependency( $pd );
 }
 
 function addProjectReference( $refName, $version = "" )
 {
-    Generator::addProjectReference( $refName, $version );
+    T3DGenerator::addProjectReference( $refName, $version );
 }
 
 // disable a specific project compiler warning
 function disableProjectWarning( $warning )
 {	
-	Generator::disableProjectWarning( $warning );
+	T3DGenerator::disableProjectWarning( $warning );
 }
 
 
 function setGameProjectName($name)
 {
-   Generator::setGameProjectName($name);
+   T3DGenerator::setGameProjectName($name);
 }
 
 function getGameProjectName()
 {
-   return Generator::getGameProjectName();
+   return T3DGenerator::getGameProjectName();
 }
 
 function setToolBuild($tb)
 {
-   Generator::setToolBuild($tb);
+   T3DGenerator::setToolBuild($tb);
 }
 
 function getToolBuild()
 {
-   return Generator::getToolBuild();
+   return T3DGenerator::getToolBuild();
 }
 
 function setWatermarkBuild($wb)
 {
-   Generator::setWatermarkBuild($wb);
+   T3DGenerator::setWatermarkBuild($wb);
 }
 
 function getWatermarkBuild()
 {
-   return Generator::getWatermarkBuild();
+   return T3DGenerator::getWatermarkBuild();
 }
 
 function setPurchaseScreenBuild($psb)
 {
-   Generator::setPurchaseScreenBuild($psb);
+   T3DGenerator::setPurchaseScreenBuild($psb);
 }
 
 function getPurchaseScreenBuild()
 {
-   return Generator::getPurchaseScreenBuild();
+   return T3DGenerator::getPurchaseScreenBuild();
 }
 
 function setDemoBuild($db)
 {
-   Generator::setDemoBuild($db);
+   T3DGenerator::setDemoBuild($db);
 }
 
 function getDemoBuild()
 {
-   return Generator::getDemoBuild();
+   return T3DGenerator::getDemoBuild();
 }
 
 function setObjectLimitBuild($olb)
 {
-   Generator::setObjectLimitBuild($olb);
+   T3DGenerator::setObjectLimitBuild($olb);
 }
 
 function getObjectLimitBuild()
 {
-   return Generator::getObjectLimitBuild();
+   return T3DGenerator::getObjectLimitBuild();
 }
 
 function setTimeOutBuild($tob)
 {
-   Generator::setTimeOutBuild($tob);
+   T3DGenerator::setTimeOutBuild($tob);
 }
 
 function getTimeOutBuild()
 {
-   return Generator::getTimeOutBuild();
+   return T3DGenerator::getTimeOutBuild();
 }
 
 function inProjectConfig()
 {
-   return Generator::inProjectConfig();
+   return T3DGenerator::inProjectConfig();
 }
 
 // On Windows, 1 - Console, 2 - Windows 
 function setProjectSubSystem( $subSystem )
 {
-    Generator::setProjectSubSystem( $subSystem );
+    T3DGenerator::setProjectSubSystem( $subSystem );
 }
 
 // Sets whether to use /MT or /MD code generation/runtime on Windows
@@ -429,7 +429,7 @@ function setProjectSubSystem( $subSystem )
 // You must include or install via the redistributable package the appropriate VS runtime for end users.  
 function setDLLRuntime ($val)
 {
-    Generator::setDLLRuntime( $val );
+    T3DGenerator::setDLLRuntime( $val );
 }
 
 //-------------------------------------------------------------------------------- UTIL
